@@ -1,20 +1,12 @@
 class Solution {
     public int maxProduct(int n) {
-
-   PriorityQueue<Integer> pq = new PriorityQueue<>();
-
-   while(n>0){
-    int digit = n%10;
-    pq.offer(digit);
-
-    if(pq.size()>2){
-        pq.poll();
-    }
-     
-     n = n/10;
-    
-   }
-   return pq.poll() * pq.poll();
-        
+        List<Integer> l = new ArrayList<>();
+        while(n > 0){
+            l.add(n % 10);
+            n /= 10;
+        }
+        Collections.sort(l);
+        int size = l.size();
+        return l.get(size - 1) * l.get(size - 2);
     }
 }
